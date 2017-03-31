@@ -1,0 +1,131 @@
+.everythingContainer{
+	width: 80%;
+	height: 600px; 
+	text-align: center;
+	margin: 0 auto;
+	padding: 10px;
+	background-color: blue; 
+}
+
+.headerContainer{
+	height: 20%;
+	padding: 10px;
+	background-color: red;
+}
+
+.upperHeaderContainer{
+	height: 60%;
+	padding: 5px;
+	background-color: green;
+}
+
+.ktcsLogoContainer{
+	width: 50%;
+	height: 100%;
+	float: left;
+	text-align: left;
+	background-color: purple;
+}
+
+.socialMediaContainer{
+	width: 50%;
+	height: 100%;
+	float: left;
+	text-align: right;
+	background-color: pink;
+}
+
+.lowerHeaderContainer{
+	height: 20%;
+	padding: 5px;
+	background-color: yellow;
+}
+
+.allButtonsContainer{
+	width: 80%;
+	height: 100%;
+	float: left;
+	text-align: left;
+	background-color: teal;
+}
+
+.loginButtonContainer{
+	width: 20%;
+	height: 100%;
+	float: left;
+	text-align: right;
+	background-color: orange;
+}
+
+.loginButton{
+	/* put in login button styling */
+}
+
+.mainBodyContainer{
+	height: 57%;
+	padding: 10px;
+	background-color: lightgreen;
+}
+
+.navigationContainer{
+	width: 20%;
+	height: 100%;
+	float: left;
+	text-align: left;
+	background-color: lightblue;
+}
+
+.contentsContainer{
+	width: 80%;
+	height: 100%;
+	float: left;
+	color: white;
+	text-align: left;
+	background-color: darkblue;
+}
+
+.loginContentsContainer{
+	width: 80%;
+	height: 100%;
+	float: left;
+	color: white;
+	text-align: left;
+	background-color: brown;
+	display: none;
+}
+
+.loginForm{
+	/* style for the login form here */
+}
+
+.updateForm{
+	/* style for the updating form here */
+}
+
+.dividerContainer{
+	height: 3%;
+	color: white;
+	background-color: black;
+}
+
+.footerContainer{
+	height: 10%;
+	padding: 10px;
+	background-color: darkred;
+}
+
+.leftFooterContentsContainer{
+	width: 50%;
+	height: 100%;
+	float: left;
+	text-align: left;
+	background-color: gray;
+}
+
+.rightFooterContentsContainer{
+	width: 50%;
+	height: 100%;
+	float: left;
+	text-align: right;
+	background-color: gold;
+}

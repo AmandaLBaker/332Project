@@ -1,10 +1,13 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Welcome to mysite</title>
-  
+        <title>KTCS</title>
     </head>
 <body>
+
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="ktcsJavaScript.js"></script>
+	<link rel="stylesheet" href="ktcsStyle.css">
 
  <?php
   //Create a user session or resume an existing one
@@ -24,9 +27,15 @@ if(isset($_GET['logout'])){
  <?php
  //check if the user is already logged in and has an active session
 if(isset($_SESSION['id'])){
-	//Redirect the browser to the profile editing page and kill this page.
-	header("Location: profile.php");
-	die();
+	if($_SESSION['id'] != 1){ // a member logged in
+		//Redirect the browser to the member editing page and kill this page.
+		header("Location: member.php");
+		die();
+	} else { // the admin logged in
+		//Redirect the browser to the admin editing page and kill this page.
+		header("Location: admin.php");
+		die();
+	}
 }
  ?>
  
@@ -61,9 +70,15 @@ if(isset($_POST['loginBtn'])){
 			$myrow = $result->fetch_assoc();
 			//Create a session variable that holds the user's id
 			$_SESSION['id'] = $myrow['member_id'];
-			//Redirect the browser to the profile editing page and kill this page.
-			header("Location: profile.php");
-			die();
+			if($_SESSION['id'] != 1){ // a member logged in
+				//Redirect the browser to the member editing page and kill this page.
+				header("Location: member.php");
+				die();
+			} else { // the admin logged in
+				//Redirect the browser to the admin editing page and kill this page.
+				header("Location: admin.php");
+				die();
+			}
 		} else {
 			//If the username/password doesn't matche a user in our database
 			// Display an error message and the login form
@@ -76,25 +91,93 @@ if(isset($_POST['loginBtn'])){
  
 ?>
 
-<!-- dynamic content will be here -->
- <form name='login' id='login' action='index.php' method='post'>
-    <table border='0'>
-        <tr>
-            <td>Username</td>
-            <td><input type='text' name='username' id='username' /></td>
-        </tr>
-        <tr>
-            <td>Password</td>
-             <td><input type='password' name='password' id='password' /></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <input type='submit' id='loginBtn' name='loginBtn' value='Log In' /> 
-            </td>
-        </tr>
-    </table>
-</form>
+<div class="everythingContainer">
+
+	<div class="headerContainer">
+
+		<div class="upperHeaderContainer">
+		
+			<div class="ktcsLogoContainer">
+			KTCS Logo Here
+			</div> <!-- close ktcsLogoContainer -->
+			
+			<div class="socialMediaContainer">
+			Facebook Twitter Instagram Here
+			</div> <!-- close socialMediaContainer -->
+			
+		</div> <!-- close upperHeaderContainer -->
+		
+		<div class="lowerHeaderContainer">
+		
+			<div class="allButtonsContainer">
+			Links to Home, News, About, Contact, Hours etc here
+			</div> <!-- close allButtonsContainer -->
+			
+			<div class="loginButtonContainer">
+				<button class="loginButton" id="loginButton" onclick="showLoginWindow()">Login</button>
+			</div> <!-- close loginButtonContainer -->
+		
+		</div> <!-- close lowerHeaderContainer -->
+
+	</div> <!-- close headerContainerStyle -->
+
+
+
+	<div class="mainBodyContainer">
+		
+		<div class="navigationContainer">
+		Put navigation here. If user isn't logged in, this area could just be empty or with a pretty car picture instead.
+		</div>
+
+		<div class="contentsContainer" id="contentsContainer">
+		Put contents here.
+		</div> <!-- close contentsContainer -->	
+		
+		<div class="loginContentsContainer" id="loginContentsContainer">
+			<form class="loginForm" id='loginForm' action='index.php' method='post'>
+				<table border='0'>
+					<tr>
+						<td>Username</td>
+						<td><input type='text' name='username' id='username' /></td>
+					</tr>
+					<tr>
+						<td>Password</td>
+						 <td><input type='password' name='password' id='password' /></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<input type='submit' id='loginBtn' name='loginBtn' value='Log In' /> 
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div> <!-- close loginContentsContainer -->
+
+	</div> <!-- close mainBodyContainer -->
+
+
+
+	<div class="dividerContainer">
+	divider ------------------------------------------------ divider
+	</div> <!-- close dividerContainer -->
+
+
+
+	<div class="footerContainer">
+
+		<div class="leftFooterContentsContainer">
+		Left footer stuff here
+		</div> <!-- close leftFooterContentsContainer -->
+		
+		<div class="rightFooterContentsContainer">
+		Right footer stuff here
+		</div> <!-- close rightFooterContentsContainer -->
+
+	</div> <!-- close footerContainer -->
+	
+</div> <!-- close everythingContainer -->
+
 
 </body>
 </html>
