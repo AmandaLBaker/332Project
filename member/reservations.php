@@ -1,48 +1,30 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Welcome MEMBER</title>
+        <title>RESERVATIONS</title>
   
     </head>
 <body>
 
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="ktcsJavaScript.js"></script>
-	<link rel="stylesheet" href="ktcsStyle.css">
+	<link rel="stylesheet" href="../ktcsStyle.css">
 	
  <?php
   //Create a user session or resume an existing one
  session_start();
  ?>
  
- <?php
- 
- if(isset($_POST['updateBtn']) && isset($_SESSION['id'])){
-  // include database connection
-    include_once 'connection.php'; 
-	
-	$query = "UPDATE members SET password=?,email=? WHERE member_id=?";
- 
-	$stmt = $con->prepare($query);	$stmt->bind_param('sss', $_POST['password'], $_POST['email'], $_SESSION['id']);
-	// Execute the query
-        if($stmt->execute()){
-            echo "Record was updated. <br/>";
-        }else{
-            echo 'Unable to update record. Please try again. <br/>';
-        }
- }
- 
- ?>
  
  <?php
 if(isset($_SESSION['id'])){
 	if($_SESSION['id'] == 1){ // if the admin happens to be logged in and is looking at the member page, he gets redirected to admin page
-		header("Location: admin.php");
+		header("Location: ../admin.php");
 		die();
 	} else {
    
    //include database connection
-   include_once 'connection.php';
+   include_once '../connection.php';
 	
 	// SELECT query
         $query = "SELECT member_id,username, password, email FROM members WHERE member_id=?";
@@ -64,7 +46,7 @@ if(isset($_SESSION['id'])){
 		
 } else {
 	//User is not logged in. Redirect the browser to the login index.php page and kill this page.
-	header("Location: index.php");
+	header("Location: ../index.php");
 	die();
 }
 ?>
@@ -92,7 +74,7 @@ if(isset($_SESSION['id'])){
 			</div> <!-- close allButtonsContainer -->
 			
 			<div class="loginButtonContainer">
-				<a href="index.php?logout=1">Log Out</a>
+				<a href="../index.php?logout=1">Log Out</a>
 			</div> <!-- close loginButtonContainer -->
 		
 		</div> <!-- close lowerHeaderContainer -->
@@ -104,20 +86,18 @@ if(isset($_SESSION['id'])){
 	<div class="mainBodyContainer">
 		
 		<div class="navigationContainer">
-			<a href="member/locations.php">KTSC Locations </a> <br/>
-			<a href="member/reservations.php">Reservations</a> <br/>
-			<a href="member/pickup.php">Car Pick Up </a> <br/>
-			<a href="member/dropoff.php">Car Drop Off </a> <br/>
-			<a href="member/rentalhistory.php">Rental History </a> <br/>
-			<a href="member/feedback.php">Feedback </a> <br/>
+			<a href="../member/locations.php">KTSC Locations </a> <br/>
+			<a href="../member/reservations.php">Reservations (MAKE PRETTY)</a> <br/>
+			<a href="../member/pickup.php">Car Pick Up </a> <br/>
+			<a href="../member/dropoff.php">Car Drop Off </a> <br/>
+			<a href="../member/rentalhistory.php">Rental History </a> <br/>
+			<a href="../member/feedback.php">Feedback </a> <br/>
 		</div>
 
 		<div class="contentsContainer" id="contentsContainer">
 			Welcome  <?php echo $myrow['username']; ?> <br/>
 			
-			Here are your upcoming reservations: 
-			
-			(show upcoming reservations here)
+			Make a new reservation:
 			
 		</div> <!-- close contentsContainer -->	
 		
